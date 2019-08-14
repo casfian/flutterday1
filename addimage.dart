@@ -13,11 +13,10 @@ class MyApp extends StatelessWidget {
         ),
         body: Center(
           child: Container(
-            child: Text('Hello World'),
+            child: Image.Network('http://www.caspian.my/images/logo.png'),
           ),
         ),
       ),
     );
   }
 }
-
