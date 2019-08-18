@@ -11,4 +11,4 @@ Flutter Day 1 Projects
 
 Instruction:
 Always create a new flutter Project. Once created, copy and paste any of the codes in individual file to your main.dart.
-Addiotional instructions available if you click xxxx.dart files. Good luck.
+Good luck.
