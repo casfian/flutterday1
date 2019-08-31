@@ -1,0 +1,140 @@
+//file main.dart
+
+import 'package:flutter/material.dart';
+import 'firstscreen.dart';
+import 'secondscreen.dart';
+
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: 'Passing Data',
+    home: FirstScreen(),
+    //guna Routing
+    routes: <String, WidgetBuilder> {
+    '/screen1': (BuildContext context) => new FirstScreen(),
+    '/screen2': (BuildContext context) => new SecondScreen(),
+    //----end define route
+  },
+
+  ));
+}
+
+//end of file main.dart
+
+
+
+
+//file firstscreen.dart
+
+import 'package:flutter/material.dart';
+import 'myobject.dart';
+import 'secondscreen.dart';
+
+class FirstScreen extends StatefulWidget {
+  @override
+  _FirstScreenState createState() => new _FirstScreenState();
+}
+
+class _FirstScreenState extends State<FirstScreen> {
+  final _tcname = TextEditingController();
+  final _tcage = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Screen 1'),
+        ),
+        body: ListView(
+          children: <Widget>[
+            ListTile(
+              title: TextField(
+                controller: _tcname,
+                decoration: InputDecoration(
+                    border: InputBorder.none, hintText: 'Student Name'),
+              ),
+            ),
+            ListTile(
+              title: TextField(
+                controller: _tcage,
+                decoration: InputDecoration(
+                    border: InputBorder.none, hintText: 'Student Age'),
+              ),
+            ),
+            ListTile(
+              title: RaisedButton(
+                  child: Text("Next"),
+                  onPressed: () {
+                    //from parameter 
+                    // Navigator.push(context, MaterialPageRoute(builder:(context)
+                    //   => new SecondScreen(value: _textController.text)));
+                    // Navigate to second screen with data
+
+                    //to using Class
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SecondScreen(
+                                student: Student(_tcname.text, _tcage.text))));
+                  }),
+            )
+          ],
+        ));
+  }
+}
+
+//end file firstscreen.dart
+
+
+
+//file secondscreen.dart
+
+import 'package:flutter/material.dart';
+import 'myobject.dart'; //object class
+
+class SecondScreen extends StatefulWidget {
+  //Create an Object class to receive the Passed Data from _TextFieldController
+  final Student student;
+  //This is how it goes to Secondscreen using key value
+  SecondScreen({Key key, this.student}) : super (key: key);
+
+  @override
+  _SecondScreenState createState() => new _SecondScreenState();
+}
+
+class _SecondScreenState extends State<SecondScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Screen 2"),
+      ),
+      body: Center(
+        //Display The Object received
+        child: Text('Student Data  \nname: ${widget.student.name} \nage: ${widget.student.age}', style: TextStyle(fontSize: 20.0),),
+      ),
+    );
+  }
+}
+
+//note: you can delete ${widget.student.name} to ${student.name} if using stateless class
+
+//end of file secondscreen.dart
+
+
+
+//file myobject.dart
+
+// Data need to sent second screen
+//You can create a class
+class Student {
+  final String name;
+  final String age;
+
+  Student(this.name, this.age);
+}
+
+// end of file myobject.dart
+
+
+
