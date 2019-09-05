@@ -9,6 +9,10 @@ Flutter Day 1 Projects
 - ListBuilder
 - Firebase CRUD
 
+Others
+- Sharedpreference
+- Splash file
+
 Instruction:
 Always create a new flutter Project. Once created, copy and paste any of the codes in individual file to your main.dart.
 Good luck.
