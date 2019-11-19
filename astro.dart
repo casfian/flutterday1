@@ -4,7 +4,10 @@ import 'dart:async';
 import 'dart:convert';
 
 //step 2:
+//install dependency at pubspec.yaml
+//goto pub.dev and search http
 import 'package:http/http.dart' as http;
+
 
 void main() => runApp(MyApp());
 
