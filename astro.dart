@@ -5,7 +5,8 @@ import 'dart:convert';
 
 //step 2:
 //install dependency at pubspec.yaml
-//goto pub.dev and search http
+//goto https://pub.dev and search "http"
+//follow the instructions
 import 'package:http/http.dart' as http;
 
 
