@@ -7,11 +7,13 @@ Flutter Day 1 Projects
 - Passing Data
 - ListView
 - ListBuilder
-- Firebase CRUD
 
 Others
 - Sharedpreference
 - Splash file
+- Firebase CRUD
+- Using Grid
+- Using Stack
 
 Instruction:
 Always create a new flutter Project. Once created, copy and paste any of the codes in individual file to your main.dart.
