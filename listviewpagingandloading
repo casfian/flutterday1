@@ -1,0 +1,77 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int page = 1;
+
+  List<String> items = ['item1', 'item2', 'item3', 'item4'];
+
+  bool isLoading = false;
+
+  Future<void> _loadingData() async {
+    await Future.delayed(Duration(seconds: 2));
+
+    print('loading more....');
+    setState(() {
+      items.addAll(['item1']);
+      print('items: ' + items.toString());
+      isLoading = false;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material App',
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('Material App Bar'),
+          ),
+          body: Column(
+            children: <Widget>[
+              //create an indicator when data is being retrieved
+              Container(
+                height: isLoading ? 50.0:0,
+                color: Colors.transparent,
+                child: Center(
+                  child: CircularProgressIndicator()),
+              ),
+              //end =============
+              //Notification Listener to listen to Scroll
+              //Expanded coz the data will expand out listview
+              Expanded(
+                child: NotificationListener<ScrollNotification>(
+                //this part to get notificaion info
+                onNotification: (ScrollNotification scrollInfo) {
+                  if(!isLoading && scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
+                     _loadingData();
+                    setState(() {
+                      isLoading = true;
+                    });
+                  }
+                  return null;
+                },
+                //this part display data in Listview
+                child: ListView.builder(
+                  itemCount: items.length,
+                  itemBuilder: (context, index) {
+                    return ListTile(
+                      title: Text(items[index]),
+                    );
+                  },
+                ),
+                )
+              ),
+
+              
+            ],
+          )),
+    );
+  }
+}
