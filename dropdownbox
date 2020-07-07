@@ -1,0 +1,50 @@
+//create a simple dropdownbox
+//main.dart
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  List<String> _fruits = ['Apple', 'Banana', 'Coconut', 'Durian']; 
+  String _selectedFruit; 
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Select Fruit:'),
+              DropdownButton(
+                hint: Text('Please choose a fruit'), 
+                value: _selectedFruit,
+                onChanged: (newValue) {
+                  setState(() {
+                    _selectedFruit = newValue;
+                  });
+                },
+                items: _fruits.map((fruit) {
+                  return DropdownMenuItem(
+                    child: Text(fruit),
+                    value: fruit,
+                  );
+                }).toList(),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
