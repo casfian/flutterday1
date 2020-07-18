@@ -1,0 +1,44 @@
+//Range Slider
+//main.dart
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  RangeValues values = RangeValues(0, 100);
+  RangeLabels labels = RangeLabels('0', '100');
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Material App Bar'),
+        ),
+        body: Center(
+          child: RangeSlider(
+            min: 0,
+            max: 100,
+            values: values,
+            labels: labels,
+            divisions: 50,
+            onChanged: (value) {
+              setState(() {
+                values = value;
+                labels =
+                    RangeLabels(value.start.toInt().toString(), value.end.toInt().toString());
+              });
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
