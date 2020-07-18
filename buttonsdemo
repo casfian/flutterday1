@@ -1,0 +1,83 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material App',
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('Material App Bar'),
+          ),
+          body: Center(
+            child: Column(
+              children: <Widget>[
+                RaisedButton(
+                    child: Text('Raised'),
+                    onPressed: () {
+                      print('I just click');
+                    }),
+                OutlineButton(
+                    child: Text('Outline'),
+                    onPressed: () {
+                      print('I just click');
+                    }),
+                FlatButton(
+                    onPressed: () {
+                      print('I just click');
+                    },
+                    child: Text('Flat')),
+                IconButton(
+                    icon: Icon(
+                      Icons.home,
+                      color: Colors.green,
+                    ),
+                    onPressed: () {
+                      print('I just click');
+                    }),
+                Container(
+                  width: 200,
+                  height: 50,
+                  child: RaisedButton.icon(
+                    color: Colors.blue,
+                    onPressed: () {
+                      print('I just click');
+                    },
+                    icon: Icon(
+                      Icons.home,
+                      color: Colors.amber,
+                    ),
+                    label: Text(
+                      'Raised Button Icon',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  child: Image.network(
+                    'https://flutter.dev/assets/flutter-lockup-1caf6476beed76adec3c477586da54de6b552b2f42108ec5bc68dc63bae2df75.png',
+                    width: 200,
+                    height: 200,
+                  ),
+                  onTap: () {
+                    print('I click');
+                  },
+                ),
+                InkWell(
+                  child: Container(
+                    width: 200,
+                    height: 40,
+                    color: Colors.amberAccent,
+                  ),
+                  onTap: () {
+                    print('I click');
+                  },
+                ),
+              ],
+            ),
+          )),
+    );
+  }
+}
