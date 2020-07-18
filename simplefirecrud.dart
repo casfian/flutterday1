@@ -77,3 +77,8 @@ Widget build(BuildContext context) {
       );
 }
 }
+
+
+//ERROR ISSUE:
+//if you have error in Android it's because of Multidex
+//just add Multidex to your Gradle file
