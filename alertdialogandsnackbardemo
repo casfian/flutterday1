@@ -1,0 +1,111 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+void main() => runApp(MyApp());
+
+//root class
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Material App',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Material App Bar'),
+        ),
+        body: Home(),
+      ),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Column(
+      children: <Widget>[
+        
+        RaisedButton(
+            child: Text('Snackbar'),
+            onPressed: () {
+              final mySnackBar = SnackBar(
+                content: Text('My Snackbar is here!'));
+              Scaffold.of(context).showSnackBar(mySnackBar);
+            }),
+
+        RaisedButton(
+          onPressed: () {
+            showDialog(
+              context: context,
+              // return object of type AlertDialog
+              builder: (BuildContext context) => CupertinoAlertDialog(
+                title: Column(
+                  children: <Widget>[
+                    Text("CupertinoAlertDialog"),
+                    Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                    ),
+                  ],
+                ),
+                content: Text("An iOS-style alert dialog."),
+                actions: <Widget>[
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Text("OK"))
+                ],
+              ),
+            );
+          },
+          child: Text('Show Cupertino AlertDialog'),
+        ),
+      ],
+    ));
+  }
+}
+
+//secondary class
+// class Home extends StatelessWidget {
+//   void function1() {
+//     print('OK');
+//   }
+
+//   void function2() {
+//     print('Cancel');
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: RaisedButton(
+//           child: Text('Show Alert'),
+//           onPressed: () {
+//             showDialog(
+//                 context: context,
+//                 builder: (BuildContext context) {
+//                   return AlertDialog(
+//                     title: Text('My Alert'),
+//                     content: Text('Stop You have Error!'),
+//                     actions: <Widget>[
+//                       RaisedButton(
+//                           child: Text('OK'),
+//                           onPressed: () {
+//                             Navigator.pop(context);
+//                             function1();
+//                           }),
+//                       RaisedButton(
+//                           child: Text('Cancel'),
+//                           onPressed: () {
+//                             Navigator.pop(context);
+//                             function2();
+//                           }),
+//                     ],
+//                   );
+//                 });
+//           }),
+//     );
+//   }
+// }
