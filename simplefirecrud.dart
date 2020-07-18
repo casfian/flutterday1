@@ -81,7 +81,7 @@ Widget build(BuildContext context) {
 
 //ERROR ISSUE:
 //if you have error in Android it's because of Multidex
-//just add Multidex to your App Gradle file under defaultConfig section as shown below
+//just add Multidex support to your App Gradle file under defaultConfig section as shown below
 
 //defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
