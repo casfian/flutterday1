@@ -20,6 +20,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   //Step 3: define 2 Variables
   String url = 'https://ams-api.astro.com.my/ams/v3/getChannelList';
+  //You can also use these Free Fake API
+  // https://jsonplaceholder.typicode.com
   List data;
   //end variables
 
