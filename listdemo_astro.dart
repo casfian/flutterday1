@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   //Step 3: define 2 Variables
-  String url = 'https://ams-api.astro.com.my/ams/v3/getChannelList';
+  var url = 'https://ams-api.astro.com.my/ams/v3/getChannelList';
   //You can also use these Free Fake API
   // https://jsonplaceholder.typicode.com
   List data;
@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   //Function to request JSON from a URL
   Future<String> makeRequest() async {
     var response = await http
-        .get(Uri.encodeFull(url), headers: {"Accept": "application/json"});
+        .get(Uri.parse(url));
     setState(() {
       var extractdata = json.decode(response.body);
       data = extractdata["channels"];
